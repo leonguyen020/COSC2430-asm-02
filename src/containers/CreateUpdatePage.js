@@ -19,11 +19,12 @@ class CreateUpdatePage extends React.Component{
     
     handleSaveProduct = values => {
         this.props.actions.saveProduct(values);
+        this.setState({formStatus: 'success'});
     };
 
     render(){
         return(
-            <ProductForm onSubmit={this.handleSaveProduct.bind(this)} fromStatus={this.state.formStatus} />
+            <ProductForm onSubmit={this.handleSaveProduct.bind(this)} formStatus={this.state.formStatus} />
         )
     }
 }

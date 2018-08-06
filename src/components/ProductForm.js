@@ -1,12 +1,33 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import {NavLink} from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 // Form
 // import {FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 
+const RedirectButton = withRouter(({ history }) => (
+    <button
+      type='button'
+      className="btn btn-success formSubmitBtn"
+      onClick={() => { history.push('/products/1') }}
+    >
+        Back to product list!
+    </button>
+))
 
 let ProductForm = props => {
     const { handleSubmit, formStatus } = props;
+
+    function redirectButton(){
+        if(formStatus === null){
+            return(
+                <button type="submit" className="btn btn-primary formSubmitBtn">Submit</button>
+            )
+        }else if(formStatus === 'success'){
+            return(
+                <RedirectButton/>
+            )
+        }
+    }
     return (
         <div className="row" style={{marginTop:'25px',display:'block'}}>
             <form className="form-group" onSubmit={handleSubmit} noValidate>
@@ -59,18 +80,23 @@ let ProductForm = props => {
                     </div>
                     <div className="col-md-12 col-xs-12">
                         {/* <Button/> */}
-                        <button type="submit" className="btn btn-primary formSubmitBtn">Submit</button>
+                        {
+                            redirectButton()
+                        }
+                        {/* <button type="submit" className="btn btn-primary formSubmitBtn">Submit</button> */}
                     </div>
                 </div>
             </form>
-            {formStatus === 'success' &&
-                <p className="alert alert-success">
-                    Product successfully saved.
-                    <NavLink to="/products/1"> Return to product list</NavLink>
-                </p>}
-                {formStatus === 'error' &&
-                <p className="alert alert-danger">Saving product failed. Please fill in all the fields.</p>
+            {/* {formStatus === 'success' &&
+                <RedirectButton/>
+                // <p className="alert alert-success">
+                //     Product successfully saved.
+                //     <NavLink to="/products/1"> Return to product list</NavLink>
+                // </p>
             }
+            {formStatus === 'error' &&
+                <p className="alert alert-danger">Saving product failed. Please fill in all the fields.</p>
+            } */}
         </div>
     )
 }

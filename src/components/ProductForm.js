@@ -28,8 +28,8 @@ let ProductForm = props => {
                             id="producer" label="Producer"
                             component={renderField}
                             />
-                        <Field name="imageURL" type="url"
-                            id="imageURL" label="Image Url"
+                        <Field name="imageUrl" type="url"
+                            id="imageUrl" label="Image Url"
                             component={renderField}
                             />
                     </div>
@@ -58,6 +58,7 @@ let ProductForm = props => {
                         />
                     </div>
                     <div className="col-md-12 col-xs-12">
+                        {/* <Button/> */}
                         <button type="submit" className="btn btn-primary formSubmitBtn">Submit</button>
                     </div>
                 </div>
@@ -117,7 +118,7 @@ const validate = values => {
         errors.producer = 'Please enter product producer';
     }
 
-    if(!values.imageURL){
+    if(!values.imageUrl){
         errors.imageURL = 'Please enter image URL for product';
     }
     return errors;

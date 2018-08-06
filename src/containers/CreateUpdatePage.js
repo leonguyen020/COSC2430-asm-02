@@ -16,15 +16,11 @@ class CreateUpdatePage extends React.Component{
             formStatus: null
         };
     }
+    
     handleSaveProduct = values => {
         this.props.actions.saveProduct(values);
-        // if (!this.props.ProductForm.syncErrors) {
-        //     this.props.actions.saveProduct(values);
-        //     this.setState({formStatus: 'success'});
-        // } else {
-        //     this.setState({formStatus: 'error'});
-        // }
     };
+
     render(){
         return(
             <ProductForm onSubmit={this.handleSaveProduct.bind(this)} fromStatus={this.state.formStatus} />

@@ -1,0 +1,122 @@
+.App {
+    padding-bottom: 3em;
+  }
+  
+.App-logo {
+    animation: App-logo-appearance 1.6s ease-in;
+    height: 80px;
+    background: white;
+    padding: 15px 0;
+    border-radius: 3px;
+}
+
+.App-title{
+    color: black;
+}
+
+.App-header {
+    background-color:white;
+    padding: 20px 0 5px;
+    color: white;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+@keyframes App-logo-appearance {
+from {
+    opacity: 0;
+    transform: scale(0.1) rotate(30deg);
+    transform-origin: center bottom;
+}
+
+50% {
+    transform: rotate(-10deg);
+}
+
+70% {
+    transform: rotate(3deg);
+}
+
+to {
+    opacity: 1;
+    transform: scale(1);
+}
+}
+
+/* Main Navigation */
+.main-nav {
+    text-align: center;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0;
+}
+
+.main-nav li {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 1em;
+}
+
+.main-nav a {
+    color: black;
+    text-transform: uppercase;
+}
+
+.main-nav a:hover {
+    color: #F6852A;
+    text-decoration: none;
+}
+
+.main-nav a:focus {
+text-decoration: none;
+}
+
+.main-nav a.selected {
+    text-decoration: none;
+}
+
+/* Avatar image size in product list */
+img.avatar {
+    height: 32px;
+    width: auto;
+}
+
+.error-text {
+    color: red;
+}
+
+.pager li {
+    margin: 0 0.5em;
+}
+.formSubmitBtn{
+    margin-top: 10px
+}
+
+/* Product table */
+.filterable {
+    margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}
+  

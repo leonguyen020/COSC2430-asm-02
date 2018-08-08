@@ -1,8 +1,6 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'react-router-dom'
-// Form
-// import {FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 
 const RedirectButton = withRouter(({ history }) => (
     <button
@@ -55,23 +53,6 @@ let ProductForm = props => {
                             />
                     </div>
                     <div className="col-md-6 col-xs-12">
-                        {/* <Field componentClass="textarea" component={renderField} rows="16"/> */}
-                        {/* <FormGroup controlId="formControlsTextarea">
-                            <ControlLabel>Description</ControlLabel>
-                            <FormControl name="productDescription" 
-                                        componentClass="textarea" 
-                                        placeholder="Product Description" 
-                                        rows="16" 
-                                        component={renderField}
-                            />
-                        </FormGroup> */}
-                        {/* <label>Description</label><br/>
-                        <textarea name="productDescription" type="textarea"
-                                id="productDescription" label="Description"
-                                // component={renderField}
-                                rows="16"
-                                style={textareaStyle}
-                        /> */}
                         <Field name="description" type="textarea"
                             id="description" label="Description"
                             component={renderField}
@@ -79,24 +60,10 @@ let ProductForm = props => {
                         />
                     </div>
                     <div className="col-md-12 col-xs-12">
-                        {/* <Button/> */}
-                        {
-                            redirectButton()
-                        }
-                        {/* <button type="submit" className="btn btn-primary formSubmitBtn">Submit</button> */}
+                        {redirectButton()}
                     </div>
                 </div>
             </form>
-            {/* {formStatus === 'success' &&
-                <RedirectButton/>
-                // <p className="alert alert-success">
-                //     Product successfully saved.
-                //     <NavLink to="/products/1"> Return to product list</NavLink>
-                // </p>
-            }
-            {formStatus === 'error' &&
-                <p className="alert alert-danger">Saving product failed. Please fill in all the fields.</p>
-            } */}
         </div>
     )
 }
@@ -153,6 +120,7 @@ const validate = values => {
 ProductForm = reduxForm({
     form: 'ProductForm',
     validate,
+    enableReinitialize: true
 })(ProductForm);
 
 export default ProductForm;

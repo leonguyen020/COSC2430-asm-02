@@ -7,7 +7,8 @@ import './assets/styles/styles.css';
 
 // Containers & Component
 import ProductsPage from './containers/ProductPage'
-import CreateUpdatePage from './containers/CreateUpdatePage'
+import AddProductPage from './containers/AddProductPage'
+import EditProductPage from './containers/EditProductPage'
 
 
 class App extends Component {
@@ -31,8 +32,8 @@ class App extends Component {
 
                 <div className="container">
                     <Route path="/products/:pageNo?" component={ProductsPage}/>
-                    <Route path="/add" component={CreateUpdatePage}/>
-                    {/* <Route path="/edit/:id" component={EditMerchantPage}/> */}
+                    <Route path="/add" component={AddProductPage}/>
+                    <Route path="/edit/:id" component={EditProductPage}/>
                     {/* <Route path="/bids/:id" component={BidsPage}/> */}
                 </div>
             </div>

@@ -9,12 +9,13 @@ import * as productActions from '../actions/productActions';
 // Component
 import ProductForm from '../components/ProductForm'
 
-class CreateUpdatePage extends React.Component{
+class AddProductPage extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             formStatus: null
         };
+        this.handleSaveProduct = this.handleSaveProduct.bind(this);
     }
     
     handleSaveProduct = values => {
@@ -24,7 +25,7 @@ class CreateUpdatePage extends React.Component{
 
     render(){
         return(
-            <ProductForm onSubmit={this.handleSaveProduct.bind(this)} formStatus={this.state.formStatus} />
+            <ProductForm onSubmit={this.handleSaveProduct} formStatus={this.state.formStatus} />
         )
     }
 }
@@ -41,4 +42,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateUpdatePage);
+export default connect(mapStateToProps, mapDispatchToProps)(AddProductPage);

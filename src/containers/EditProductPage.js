@@ -15,14 +15,6 @@ class EditProductPage extends React.Component{
         this.handleEdit = this.handleEdit.bind(this);
     }
 
-    handleSubmit(e){
-        let productEdited = Object.assign({},this.props.ProductForm.value,{
-            _id: this.props.currentProduct._id,
-        });
-        this.props.actions.updateProduct(productEdited);
-        this.setState({formStatus: 'success'});
-    }
-
     handleEdit = values => {
         let productEdited = Object.assign({},values,{
             _id: values._id

@@ -21,7 +21,7 @@ export function ajaxLoading(status){
 export function getTypes(){
     return dispatch => {
         dispatch(ajaxLoading(true));
-        axios.get("http://rmit.chickenkiller.com:8080/productTypes",{
+        axios.get(`${url}`,{
             body: JSON.stringify()
         }) // Receive API
             .then(response => {

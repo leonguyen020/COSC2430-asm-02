@@ -1,7 +1,21 @@
+// Library
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
+import 'font-awesome/css/font-awesome.min.css';
 // Child components
 import Pagination from '../Pagination';
+
+const AddTypeButton = withRouter(({ history }) => (
+    <button
+      type='button'
+      className="btn btn-primary"
+      style={{"marginBottom":"20px"}}
+      onClick={() => { history.push('/add-types') }}
+    >
+        <i className="fa fa-plus"> Add new categories</i>
+    </button>
+))
 
 const TypesList = ({productType,onDeleteProductType,pages,currentPage}) => {
     return(
@@ -9,6 +23,7 @@ const TypesList = ({productType,onDeleteProductType,pages,currentPage}) => {
         <p className="alert alert-warning text-center">No categories found.</p>
         :
         <div>
+            <AddTypeButton/>
             <div className="responsive-table">
                 <table className="table table-bordered table-striped table-list-search">
                     <thead>
@@ -31,7 +46,7 @@ const TypesList = ({productType,onDeleteProductType,pages,currentPage}) => {
                                     </td>
                                     <td>
                                         <NavLink className="btn btn-primary btn-sm"
-                                                to={'/edit/' + productType._id}>Edit</NavLink>
+                                                to={'/edit-type/' + productType._id}>Edit</NavLink>
                                     </td>
                                     <td>
                                         <button className="btn btn-sm btn-danger"

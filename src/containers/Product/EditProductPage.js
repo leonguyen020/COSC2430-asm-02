@@ -47,7 +47,6 @@ function findCurrentProduct(product,_id){
     return product.find(product => {
         return product._id === _id;
     });
-    // return this.props.actions.fetchByID(product._id);
 }
 
 function mapStateToProps(state, ownProps) {

@@ -13,6 +13,7 @@ import EditProductPage from './containers/Product/EditProductPage'
 // Categories
 import ProductsTypePage from './containers/ProductTypes/ProductTypePage'
 import AddTypePage from './containers/ProductTypes/AddTypePage'
+import EditTypePage from './containers/ProductTypes/EditTypePage'
 
 
 class App extends Component {
@@ -25,16 +26,10 @@ class App extends Component {
                     <nav className="main-nav">
                         <ul>
                             <li>
-                                <NavLink activeClassName="selected" to="/products/1">Product list</NavLink>
+                                <NavLink activeClassName="selected" to="/products/1">Products list</NavLink>
                             </li>
                             <li>
                                 <NavLink activeClassName="selected" to="/productTypes/1">Categories list</NavLink>
-                            </li>
-                            <li>
-                                <NavLink activeClassName="selected" to="/add-product">Add product</NavLink>
-                            </li>
-                            <li>
-                                <NavLink activeClassName="selected" to="/add-types">Add categories</NavLink>
                             </li>
                         </ul>
                     </nav>
@@ -44,12 +39,12 @@ class App extends Component {
                     {/* Product */}
                     <Route path="/products/:pageNo?" component={ProductsPage}/>
                     <Route path="/add-product" component={AddProductPage}/>
-                    <Route path="/edit/:id" component={EditProductPage}/>
+                    <Route path="/edit-product/:id" component={EditProductPage}/>
                     
                     {/* Categories */}
                     <Route path="/productTypes/:pageNo?" component={ProductsTypePage}/>
                     <Route path="/add-types" component={AddTypePage}/>
-                    {/* <Route path="/editTypes/:id" component={EditProductPage}/> */}
+                    <Route path="/edit-type/:id" component={EditTypePage}/>
                 </div>
             </div>
         </Router>

@@ -6,7 +6,7 @@ const RedirectButton = withRouter(({ history }) => (
     <button
       type='button'
       className="btn btn-success formSubmitBtn"
-      onClick={() => { history.push('/') }}
+      onClick={() => { history.push('/productTypes/1') }}
     >
         Back to categories list!
     </button>

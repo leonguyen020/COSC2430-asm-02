@@ -6,11 +6,11 @@ var header ={
     'Accept': 'application/json, text/plain, */*',
     'Content-Type': 'application/json'
 }
-var url = "http://rmit.chickenkiller.com:8080/products";
+var url = "http://rmit.chickenkiller.com:8080/productTypes";
 
 // Set data
-export function setProduct(product){
-    return { type: type.SET_PRODUCT,product };
+export function setType(productType){
+    return { type: type.SET_TYPE,productType };
 }
 
 // Loading with ajax
@@ -18,14 +18,15 @@ export function ajaxLoading(status){
     return { type: type.AJAX_LOADING, status };
 }
 
-export function getProducts(){
+export function getTypes(){
     return dispatch => {
         dispatch(ajaxLoading(true));
-        axios.get(`${url}`,{
+        axios.get("http://rmit.chickenkiller.com:8080/productTypes",{
             body: JSON.stringify()
         }) // Receive API
             .then(response => {
-                dispatch(setProduct(response.data));
+                console.log(response.data);
+                dispatch(setType(response.data));
                 dispatch(ajaxLoading(false));
             })
             .catch(error => {
@@ -35,7 +36,7 @@ export function getProducts(){
     }
 }
 
-export function fetchByID(id){
+export function fetchTypesByID(id){
     
     return function(dispatch){
         dispatch(ajaxLoading(true));
@@ -44,47 +45,48 @@ export function fetchByID(id){
         })
         .then( (res)=> {return res.json()} )
         .then((data)=>{
-            dispatch({type: 'FETCH_BY_ID', fetchById: data})
+            dispatch({type: 'FETCH_TYPES_BY_ID', fetchTypesById: data})
         })   
     }
 }
 
 // Add new data
-export function saveProduct(product){
+export function saveType(productType){
     return function(dispatch){
         fetch(`${url}`, {
             headers: header,
             method: 'post', 
-            body: JSON.stringify(product)
+            body: JSON.stringify(productType)
         })
         .then((res)=>{
             return res.json()
         })
         .then((data)=>{
-            dispatch({type:'ADD_PRODUCT', product: data});
+            console.log(data);
+            dispatch({type:'ADD_TYPE', productType: data});
         })
     }
 }
 
 // Edit data
-export function updateProduct(product){
+export function updateType(productType){
     return function(dispatch){
         fetch(`${url}`, {
             headers: header,
             method: 'put', 
-            body: JSON.stringify(product)
+            body: JSON.stringify(productType)
         })
         .then((res)=>{
             return res.json()
         })
         .then((data)=>{
-            dispatch(getProducts())
+            dispatch(getTypes())
         })
     }
 }
 
 // Delete data
-export function deleteProduct(id){
+export function deleteType(id){
     return function(dispatch){
         console.log(id)
         fetch(`${url}/${id}`, {
@@ -93,7 +95,7 @@ export function deleteProduct(id){
         .then((res)=>
             {return res.json()})
         .then((data)=>{
-            dispatch({type: 'DELETE_PRODUCT', id: id})
+            dispatch({type: 'DELETE_TYPE', id: id})
         })   
     }
 }

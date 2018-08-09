@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 // Actions
-import * as productActions from '../actions/productActions';
+import * as productActions from '../../actions/productActions';
 // Child components
-import ProductForm from '../components/ProductForm';
+import ProductForm from '../../components/Product/ProductForm';
 
 class EditProductPage extends React.Component{
     constructor(props) {

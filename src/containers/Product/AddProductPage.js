@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 // Actions
-import * as productActions from '../actions/productActions';
+import * as productActions from '../../actions/productActions';
 
 // Component
-import ProductForm from '../components/ProductForm'
+import ProductForm from '../../components/Product/ProductForm'
 
 class AddProductPage extends React.Component{
     constructor(props){

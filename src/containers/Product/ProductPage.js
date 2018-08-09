@@ -1,11 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+// import $ from 'jquery'
 
 // Actions
-import * as productActions from '../actions/productActions';
+import * as productActions from '../../actions/productActions';
 // Child components
-import ProductsList from '../components/ProductsList';
+import ProductsList from '../../components/Product/ProductsList';
 
 class ProductPage extends React.Component {
     constructor(props){

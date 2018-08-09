@@ -1,25 +1,14 @@
 import { combineReducers } from 'redux';
-import { reducer as ProductForm } from 'redux-form';
+import { reducer as Form } from 'redux-form';
 // Reducers
 import product from './productReducer';
+import productType from './typeReducer';
 import ajaxLoading from './ajaxLoadingReducers';
-// import * as types from '../actions/actionTypes';
-
-// function editedProductReducer(state = {}, action){
-//     switch(action.type){
-//       case types.FETCH_BY_ID:
-//         return action.editedProduct
-//       case types.ADD_NEW_PRODUCT:
-//         return initialEditedProduct
-//       default: 
-//         return state
-//     }
-// }
 
 const rootReducer = combineReducers({
     product,
-    // editedProductReducer,
+    productType,
     ajaxLoading,
-    form: ProductForm
+    form: Form,
 });
 export default rootReducer;

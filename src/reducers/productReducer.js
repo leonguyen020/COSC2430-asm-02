@@ -10,10 +10,6 @@ export default function ProductReducer(state = [], action) {
         case types.ADD_PRODUCT:
             var newProduct = [...state, action.product] 
             return newProduct;
-            // return [
-            //     ...state,
-            //     Object.assign({}, action.product)
-            // ];
         case types.EDIT_PRODUCT:
             return [
                 ...state.filter(product => product.id !== action.product.id),
@@ -28,18 +24,3 @@ export default function ProductReducer(state = [], action) {
             return state;
     }
 }
-
-// export function ProductJSON(state = {}, action){
-//     switch(action.types){
-//         case types.FETCH_BY_ID:
-//             return action.fetchById
-//         default:
-//             return state
-//     }
-// }
-
-// const combinedReducer = combineReducers({
-//     ProductJSON,ProductState
-// })
-
-// export default combinedReducer;

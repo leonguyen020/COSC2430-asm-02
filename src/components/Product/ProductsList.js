@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 // Child components
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 import NumberFormat from 'react-number-format';
 
 function handleCheck(URL){
@@ -19,7 +19,7 @@ const ProductsList = ({product,onDeleteProduct,pages,currentPage}) => {
         :
         <div>
             <div className="responsive-table">
-                <table className="table table-bordered table-striped">
+                <table className="table table-bordered table-striped table-list-search">
                     <thead>
                         <tr>
                             <th>ID</th>

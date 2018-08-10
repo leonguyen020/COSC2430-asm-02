@@ -41,14 +41,14 @@ const ProductsList = ({product,onDeleteProduct,pages,currentPage}) => {
                             <th>Price</th>
                             <th>Description</th>
                             <th>Brand</th>
-                            <th>Producer</th>
+                            <th>Categories</th>
                             <th>Product Image</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {product.map(product=>{
+                        {product.map((product)=>{
                             return (
                                 <tr key={product._id}>
                                     <td>

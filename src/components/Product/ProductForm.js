@@ -44,7 +44,7 @@ let ProductForm = props => {
                             component={renderField}
                             />
                         <Field name="producer" type="text"
-                            id="producer" label="Producer"
+                            id="producer" label="Categories"
                             component={renderField}
                             />
                         <Field name="imageUrl" type="url"

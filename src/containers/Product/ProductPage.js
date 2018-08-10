@@ -28,7 +28,7 @@ class ProductPage extends React.Component {
                         <p className="text-center alert alert-info">Loading products...</p>
                         :
                         <ProductsList product={this.props.product} pages={this.props.pages}
-                                      onDeleteProduct={this.deleteProduct} currentPage={this.props.currentPage} />
+                                    onDeleteProduct={this.deleteProduct} currentPage={this.props.currentPage} />
                 }
             </div>
         )

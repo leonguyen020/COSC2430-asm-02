@@ -25,7 +25,6 @@ export function getTypes(){
             body: JSON.stringify()
         }) // Receive API
             .then(response => {
-                console.log(response.data);
                 dispatch(setType(response.data));
                 dispatch(ajaxLoading(false));
             })

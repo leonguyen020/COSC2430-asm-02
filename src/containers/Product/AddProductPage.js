@@ -25,14 +25,15 @@ class AddProductPage extends React.Component{
 
     render(){
         return(
-            <ProductForm onSubmit={this.handleSaveProduct} formStatus={this.state.formStatus} />
+            <ProductForm productType={this.props.productType} onSubmit={this.handleSaveProduct} formStatus={this.state.formStatus} />
         )
     }
 }
 
 function mapStateToProps(state){
     return{
-        productForm: state.form.product
+        productForm: state.form.product,
+        productType: state.productType,
     }
 }
 

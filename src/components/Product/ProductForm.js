@@ -13,7 +13,7 @@ const RedirectButton = withRouter(({ history }) => (
 ))
 
 let ProductForm = props => {
-    const { handleSubmit, formStatus } = props;
+    const { handleSubmit, formStatus, productType} = props;
 
     function redirectButton(){
         if(formStatus === null){
@@ -34,23 +34,32 @@ let ProductForm = props => {
                         <Field name="name" type="text"
                             id="name" label="Name"
                             component={renderField}
-                            />
+                        />
                         <Field name="price" type="tel"
                             id="price" label="Price"
                             component={renderField}
-                            />
+                        />
                         <Field name="brand" type="text"
                             id="brand" label="Brand"
                             component={renderField}
-                            />
+                        />
                         <Field name="producer" type="text"
-                            id="producer" label="Categories"
+                            id="producer" label="Producer"
                             component={renderField}
                             />
+                        <Field label="Categories" 
+                                component={SelectField} 
+                                name="productType" id="productType"
+                                children={productType.map((productType,i)=>{
+                                    return (
+                                        <option key ={i} value={productType._id}>{productType.name}</option>   
+                                    );
+                                })}
+                        />
                         <Field name="imageUrl" type="url"
                             id="imageUrl" label="Image Url"
                             component={renderField}
-                            />
+                        />
                     </div>
                     <div className="col-md-6 col-xs-12">
                         <Field name="description" type="textarea"
@@ -67,6 +76,33 @@ let ProductForm = props => {
         </div>
     )
 }
+
+const SelectField = ({
+    input,
+    label,
+    id,
+    children,
+    meta: {touched, error},
+})=>(
+    <div className="form-group">
+        <label htmlFor={id}>
+            {label}
+        </label>
+
+        <select className="form-control" {...input}>
+            <option value="">Choose your categories</option>
+            {children}
+        </select>
+
+
+        {touched &&
+        (error &&
+        <span className="error-text">
+            {error}
+        </span>)}
+
+    </div>
+);
 
 const renderField = ({
     input,
@@ -109,6 +145,10 @@ const validate = values => {
 
     if(!values.producer){
         errors.producer = 'Please enter product producer';
+    }
+
+    if(!values.productType){
+        errors.productType = 'Please choose respective product type';
     }
 
     if(!values.imageUrl){

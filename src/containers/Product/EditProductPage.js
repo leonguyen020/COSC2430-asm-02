@@ -35,7 +35,8 @@ class EditProductPage extends React.Component{
                     <div className="add-merchant">
                         <h1 className="text-center text-capitalize">Edit product information</h1>
                         <ProductForm onSubmit={this.handleEdit} formStatus={this.state.formStatus}
-                                      initialValues={this.props.currentProduct} goBack={this.props.goBack} />
+                                    productType={this.props.productType}
+                                    initialValues={this.props.currentProduct} goBack={this.props.goBack} />
                     </div>
         )
     }
@@ -53,6 +54,7 @@ function mapStateToProps(state, ownProps) {
     let currentProduct = state.product.length ? findCurrentProduct(state.product, ownProps.match.params.id) : null;
     return {
         currentProduct,
+        productType: state.productType,
         productForm: state.form.product,
         ajaxLoading: state.ajaxLoading,
         goBack: ownProps.history.goBack

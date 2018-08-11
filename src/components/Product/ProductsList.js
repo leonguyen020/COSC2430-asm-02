@@ -25,7 +25,14 @@ function handleCheck(URL){
     }
 }
 
-const ProductsList = ({product,onDeleteProduct,pages,currentPage}) => {
+// Clause = productType, condition = product.productType
+function findTypeByID(clause,condition){
+    return clause.filter((e) => e._id === condition).map(
+            e => {return e.name}
+        )
+}
+
+const ProductsList = ({productType,product,onDeleteProduct,pages,currentPage}) => {
     return(
         !product.length ?
         <p className="alert alert-warning text-center">No products found.</p>
@@ -41,7 +48,8 @@ const ProductsList = ({product,onDeleteProduct,pages,currentPage}) => {
                             <th>Price</th>
                             <th>Description</th>
                             <th>Brand</th>
-                            <th>Categories</th>
+                            <th>Producer</th>
+                            <th>Product Type</th>
                             <th>Product Image</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -49,10 +57,11 @@ const ProductsList = ({product,onDeleteProduct,pages,currentPage}) => {
                     </thead>
                     <tbody>
                         {product.map((product)=>{
+                            let productTypeResult = findTypeByID(productType,product.productType) ;
                             return (
                                 <tr key={product._id}>
                                     <td>
-                                        {product._id}
+                                        {"..."+product._id.substr(19,24)}
                                     </td>
                                     <td>
                                         {product.name}
@@ -68,6 +77,14 @@ const ProductsList = ({product,onDeleteProduct,pages,currentPage}) => {
                                     </td>
                                     <td>
                                         {product.producer}
+                                    </td>
+                                    <td>
+                                        {/* {findTypeByID(productType,product.productType)} */}
+                                        {
+                                            productTypeResult.length 
+                                                ? productTypeResult 
+                                                : (<span style={{color:'red'}}>Unidentified</span>)
+                                        }
                                     </td>
                                     <td>
                                         {handleCheck(product.imageUrl)}

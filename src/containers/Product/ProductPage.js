@@ -20,7 +20,6 @@ class ProductPage extends React.Component {
         }
     }
     render(){
-        // const {product} = this.props;
         return(
             <div className="products">
                 {
@@ -28,6 +27,7 @@ class ProductPage extends React.Component {
                         <p className="text-center alert alert-info">Loading products...</p>
                         :
                         <ProductsList product={this.props.product} pages={this.props.pages}
+                                    productType={this.props.productType}
                                     onDeleteProduct={this.deleteProduct} currentPage={this.props.currentPage} />
                 }
             </div>
@@ -53,6 +53,7 @@ function mapStateToProps(state, ownProps) {
     let product = generateProductsByPage(state.product, pageNo);
     return {
         product: product,
+        productType:state.productType, // Product Type State in InitialState
         pages: Math.ceil(state.product.length / 10), // Determine number of pages for pagination
         currentPage: pageNo,
         ajaxLoading: state.ajaxLoading

@@ -1,21 +1,9 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 // Child components
 import Pagination from '../Pagination';
 import NumberFormat from 'react-number-format';
 import 'font-awesome/css/font-awesome.min.css';
-
-const AddProductButton = withRouter(({ history }) => (
-    <button
-      type='button'
-      className="btn btn-primary"
-      style={{"marginBottom":"20px"}}
-      onClick={() => { history.push('/add-product') }}
-    >
-        <i className="fa fa-plus"> Add new product</i>
-    </button>
-))
 
 function handleCheck(URL){
     if(URL !== ""){
@@ -32,28 +20,12 @@ function findTypeByID(clause,condition){
         )
 }
 
-const ProductsList = ({searchState,updateSearch,productType,product,onDeleteProduct,pages,currentPage}) => {
+const ProductsList = ({productType,product,onDeleteProduct,pages,currentPage}) => {
     return(
         !product.length ?
         <p className="alert alert-warning text-center">No products found.</p>
         :
         <div>
-            <div className="col-md-12">
-                <div className="col-md-4">
-                    <AddProductButton/>
-                </div>
-                <div className="col-md-5"></div>
-                <div className="col-md-3 input-container">
-                    <i className="fa fa-search icon"></i>
-                    <input type="text"
-                            placeholder="Search for ..."
-                            className="form-control input-field"
-                            value={searchState}
-                            onChange={updateSearch}
-                    />
-                </div>
-            </div>
-            
             <div className="responsive-table">
                 <table className="table table-bordered table-striped table-list-search">
                     <thead>

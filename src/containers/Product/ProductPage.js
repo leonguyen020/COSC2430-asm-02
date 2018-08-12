@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { AddProductButton } from '../../components/InputField'
 // import $ from 'jquery'
 
 // Actions
@@ -11,18 +12,7 @@ import ProductsList from '../../components/Product/ProductsList';
 class ProductPage extends React.Component {
     constructor(props){
         super(props);
-        this.state ={
-            search: ''
-        }
         this.deleteProduct = this.deleteProduct.bind(this);
-    }
-
-    updateSearch(event){
-        this.setState(
-            {
-                search: event.target.value.substr(0,20)
-            }
-        )
     }
 
     deleteProduct(id){
@@ -37,11 +27,14 @@ class ProductPage extends React.Component {
                     this.props.ajaxLoading ?
                         <p className="text-center alert alert-info">Loading products...</p>
                         :
-                        <ProductsList product={this.props.product} pages={this.props.pages}
-                                    updateSearch={this.updateSearch.bind(this)} // update for search input
-                                    searchState={this.props.searchState} // set search state for value
-                                    productType={this.props.productType}
-                                    onDeleteProduct={this.deleteProduct} currentPage={this.props.currentPage} />
+                        <div>
+                            <div className="col-md-12">
+                                <AddProductButton/>
+                            </div>
+                            <ProductsList product={this.props.product} pages={this.props.pages}
+                                        productType={this.props.productType}
+                                        onDeleteProduct={this.deleteProduct} currentPage={this.props.currentPage} />
+                        </div>
                 }
             </div>
         )
@@ -70,7 +63,6 @@ function mapStateToProps(state, ownProps) {
         pages: Math.ceil(state.product.length / 10), // Determine number of pages for pagination
         currentPage: pageNo,
         ajaxLoading: state.ajaxLoading,
-        searchState: state.search
     };
 }
 

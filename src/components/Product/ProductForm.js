@@ -1,18 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { withRouter } from 'react-router-dom'
 // Child component
-import { renderField,SelectField,TextAreaField } from '../InputField'
-
-const RedirectButton = withRouter(({ history }) => (
-    <button
-      type='button'
-      className="btn btn-success formSubmitBtn"
-      onClick={() => { history.push('/products/1') }}
-    >
-        Back to product list!
-    </button>
-))
+import { RedirectButton,renderField,SelectField,TextAreaField } from '../InputField'
 
 let ProductForm = props => {
     const { handleSubmit, formStatus, productType} = props;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom';
 
 export const TextAreaField =({
     input,
@@ -68,3 +69,26 @@ export const renderField = ({
         </span>)}
     </div>
 )
+
+// Button
+
+export const AddProductButton = withRouter(({ history }) => (
+    <button
+      type='button'
+      className="btn btn-primary"
+      style={{"marginBottom":"20px"}}
+      onClick={() => { history.push('/add-product') }}
+    >
+        <i className="fa fa-plus"> Add new product</i>
+    </button>
+))
+
+export const RedirectButton = withRouter(({ history }) => (
+    <button
+      type='button'
+      className="btn btn-success formSubmitBtn"
+      onClick={() => { history.push('/products/1') }}
+    >
+        Back to product list!
+    </button>
+))

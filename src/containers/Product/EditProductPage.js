@@ -32,7 +32,7 @@ class EditProductPage extends React.Component{
                 !this.props.currentProduct ?
                     <p className="text-center alert alert-danger">Product not found.</p>
                     :
-                    <div className="add-merchant">
+                    <div className="add-product">
                         <h1 className="text-center text-capitalize">Edit product information</h1>
                         <ProductForm onSubmit={this.handleEdit} formStatus={this.state.formStatus}
                                     productType={this.props.productType}

@@ -25,7 +25,13 @@ class AddProductPage extends React.Component{
 
     render(){
         return(
-            <ProductForm productType={this.props.productType} onSubmit={this.handleSaveProduct} formStatus={this.state.formStatus} />
+            <div className="add-product">
+                <h1 className="text-center text-capitalize">Add new product</h1>
+                <ProductForm productType={this.props.productType} 
+                        onSubmit={this.handleSaveProduct} 
+                        formStatus={this.state.formStatus} />
+            </div>
+            
         )
     }
 }

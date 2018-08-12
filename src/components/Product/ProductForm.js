@@ -1,6 +1,8 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'react-router-dom'
+// Child component
+import { renderField,SelectField,TextAreaField } from '../InputField'
 
 const RedirectButton = withRouter(({ history }) => (
     <button
@@ -62,11 +64,14 @@ let ProductForm = props => {
                         />
                     </div>
                     <div className="col-md-6 col-xs-12">
-                        <Field name="description" type="textarea"
+                        {/* <Field name="description" type="textarea"
                             id="description" label="Description"
                             component={renderField}
                             rows="16"
-                        />
+                        /> */}
+                        <Field name="description" id="description" 
+                            label="Description" component={TextAreaField}
+                            rows="19"/>
                     </div>
                     <div className="col-md-12 col-xs-12">
                         {redirectButton()}
@@ -76,53 +81,6 @@ let ProductForm = props => {
         </div>
     )
 }
-
-const SelectField = ({
-    input,
-    label,
-    id,
-    children,
-    meta: {touched, error},
-})=>(
-    <div className="form-group">
-        <label htmlFor={id}>
-            {label}
-        </label>
-
-        <select className="form-control" {...input}>
-            <option value="">Choose your categories</option>
-            {children}
-        </select>
-
-
-        {touched &&
-        (error &&
-        <span className="error-text">
-            {error}
-        </span>)}
-
-    </div>
-);
-
-const renderField = ({
-    input,
-    label,
-    type,
-    id,
-    meta: {touched, error}
-})=>(
-    <div className="form-group">
-        <label htmlFor={id}>
-            {label}
-        </label>
-        <input {...input} id={id} type={type} className="form-control"/>
-        {touched &&
-        (error &&
-        <span className="error-text">
-        {error}
-        </span>)}
-    </div>
-)
 
 const validate = values => {
     const errors= {};

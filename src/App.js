@@ -4,11 +4,13 @@ import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 import logo from './assets/images/Sitelogo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/styles.css';
+import './assets/styles/iconStyle.css';
 
 // Containers & Component
 import ProductsPage from './containers/Product/ProductPage'
 import AddProductPage from './containers/Product/AddProductPage'
 import EditProductPage from './containers/Product/EditProductPage'
+import DetailsPage from './containers/Product/DetailsPage'
 
 // Categories
 import ProductsTypePage from './containers/ProductTypes/ProductTypePage'
@@ -35,11 +37,12 @@ class App extends Component {
                     </nav>
                 </div>
 
-                <div className="container">
+                <div className="container-fluid">
                     {/* Product */}
                     <Route path="/products/:pageNo?" component={ProductsPage}/>
                     <Route path="/add-product" component={AddProductPage}/>
                     <Route path="/edit-product/:id" component={EditProductPage}/>
+                    <Route path="/product-details/:id" component={DetailsPage}/>
                     
                     {/* Categories */}
                     <Route path="/productTypes/:pageNo?" component={ProductsTypePage}/>

@@ -1,9 +1,9 @@
 // import { combineReducers } from 'redux'
 // Action type
 import * as types from '../actions/actionTypes';
-// import initialState from '../store/initialState';
+import initialState from '../store/initialState';
 
-export default function ProductReducer(state = [], action) {
+export default function ProductReducer(state = initialState.product, action) {
     switch (action.type) {
         case types.SET_PRODUCT:
             return action.product;

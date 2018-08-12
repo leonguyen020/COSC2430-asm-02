@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 // Child components
 import Pagination from '../Pagination';
 import NumberFormat from 'react-number-format';
@@ -32,13 +32,28 @@ function findTypeByID(clause,condition){
         )
 }
 
-const ProductsList = ({productType,product,onDeleteProduct,pages,currentPage}) => {
+const ProductsList = ({searchState,updateSearch,productType,product,onDeleteProduct,pages,currentPage}) => {
     return(
         !product.length ?
         <p className="alert alert-warning text-center">No products found.</p>
         :
         <div>
-            <AddProductButton/>
+            <div className="col-md-12">
+                <div className="col-md-4">
+                    <AddProductButton/>
+                </div>
+                <div className="col-md-5"></div>
+                <div className="col-md-3 input-container">
+                    <i className="fa fa-search icon"></i>
+                    <input type="text"
+                            placeholder="Search for ..."
+                            className="form-control input-field"
+                            value={searchState}
+                            onChange={updateSearch}
+                    />
+                </div>
+            </div>
+            
             <div className="responsive-table">
                 <table className="table table-bordered table-striped table-list-search">
                     <thead>
@@ -51,13 +66,14 @@ const ProductsList = ({productType,product,onDeleteProduct,pages,currentPage}) =
                             <th>Producer</th>
                             <th>Product Type</th>
                             <th>Product Image</th>
+                            <th>Details</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {product.map((product)=>{
-                            let productTypeResult = findTypeByID(productType,product.productType) ;
+                            let productTypeResult = findTypeByID(productType,product.productType);
                             return (
                                 <tr key={product._id}>
                                     <td>
@@ -88,6 +104,10 @@ const ProductsList = ({productType,product,onDeleteProduct,pages,currentPage}) =
                                     </td>
                                     <td>
                                         {handleCheck(product.imageUrl)}
+                                    </td>
+                                    <td>
+                                        <NavLink className="btn btn-success btn-sm"
+                                                    to={'/product-details/' + product._id}>View</NavLink>
                                     </td>
                                     <td>
                                         <NavLink className="btn btn-primary btn-sm"

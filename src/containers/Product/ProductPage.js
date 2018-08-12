@@ -11,7 +11,18 @@ import ProductsList from '../../components/Product/ProductsList';
 class ProductPage extends React.Component {
     constructor(props){
         super(props);
+        this.state ={
+            search: ''
+        }
         this.deleteProduct = this.deleteProduct.bind(this);
+    }
+
+    updateSearch(event){
+        this.setState(
+            {
+                search: event.target.value.substr(0,20)
+            }
+        )
     }
 
     deleteProduct(id){
@@ -27,6 +38,8 @@ class ProductPage extends React.Component {
                         <p className="text-center alert alert-info">Loading products...</p>
                         :
                         <ProductsList product={this.props.product} pages={this.props.pages}
+                                    updateSearch={this.updateSearch.bind(this)} // update for search input
+                                    searchState={this.props.searchState} // set search state for value
                                     productType={this.props.productType}
                                     onDeleteProduct={this.deleteProduct} currentPage={this.props.currentPage} />
                 }
@@ -56,7 +69,8 @@ function mapStateToProps(state, ownProps) {
         productType:state.productType, // Product Type State in InitialState
         pages: Math.ceil(state.product.length / 10), // Determine number of pages for pagination
         currentPage: pageNo,
-        ajaxLoading: state.ajaxLoading
+        ajaxLoading: state.ajaxLoading,
+        searchState: state.search
     };
 }
 

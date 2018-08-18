@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 // Child components
-import Pagination from '../Pagination';
+import Pagination from './Pagination';
 import NumberFormat from 'react-number-format';
 import 'font-awesome/css/font-awesome.min.css';
 

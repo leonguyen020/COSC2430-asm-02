@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import 'font-awesome/css/font-awesome.min.css';
 // Child components
-import Pagination from '../Pagination';
+import Pagination from './Pagination';
 
 const AddTypeButton = withRouter(({ history }) => (
     <button
